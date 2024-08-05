@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Post & Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .nav {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        .about-box{
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 10px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px;
+
+        }
+        .post-container, .signin-container {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 10px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px;
+        }
+        .post-header, .signin-header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+        .post-header h1, .signin-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .post-content {
+            padding: 20px;
+        }
+        .post-content img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .post-footer {
+            padding: 10px;
+            background-color: #f8f9fa;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+        .post-footer a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .signin-form {
+            padding: 20px;
+        }
+        .signin-form input[type="text"], .signin-form input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .signin-form button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .signin-form button:hover {
+            background-color: #0056b3;
+        }
+        #about{
+
+            padding: 20px;
+
+        }
+        #contentmade{
+            color:red;
+            width: 559px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="#about">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="blog.html">Blog</a>
+    </div>
+
+    <div class="container">
+        <!-- Social Media Post Section -->
+        <div class="post-container">
+            <div class="post-header">
+                <h1>Your Awesome Post Title</h1>
+            </div>
+            <div class="post-content">
+                <form onsubmit="return createcontent()">
+                    <input type="file" id="myFile" name="filename" onchange="loadFile(event)" >
+                    <input type="submit">
+                  </form>
+                <img id="output" src="https://via.placeholder.com/600x400" alt="Descriptive Alt Text">
+                <textarea id="contentmade">Your description of the image
+                </textarea>
+                <button onclick="return copy()">copytext</button>
+            </div>
+            <div class="post-footer">
+                <a href="#">Read more</a>
+            </div>
+        </div>
+
+
+        <div class="about-box">
+
+            <div id="about">
+                <p>The useful Website to create ai text for content creation..</p>
+
+            </div> 
+        </div>
+        <div class="contact">
+
+        </div>
+    </div>
+    <script>
+        function createcontent(){
+            document.getElementById("contentmade").innerHTML="Here’s a beautiful description for your image 🌟 Dreams Take Flight in Paris 🌟 A magical moment captured as a young adventurer stands before the majestic Eiffel Tower, holding a vibrant rainbow-colored kite. The golden hues of the sunset cast a warm glow, creating a scene straight out of a fairytale. ✨ #Paris #EiffelTower #ChildhoodDreams #SunsetMagic #TravelMoments";
+            return false;
+
+        }
+        function loadFile(event){
+            var image=document.getElementById("output");
+            image.src = URL.createObjectURL(event.target.files[0]);
+        }
+        function copy(){
+
+
+            var copyText = document.getElementById("contentmade");
+
+  // Select the text field
+            copyText.focus();
+            copyText.select();
+            //copyText.setSelectionRange(0, 99999); // For mobile devices
+
+   // Copy the text inside the text field
+            navigator.clipboard.writeText(copyText.value);
+
+  // Alert the copied text
+            alert("Copied the text: " + copyText.value);
+        }
+
+    </script>
+
+</body>
+</html>
